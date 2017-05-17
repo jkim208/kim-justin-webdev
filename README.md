@@ -7,7 +7,11 @@ b. Describe the purpose of repository, e.g., for webdev
     Web development repository
 
 c. Create links to the following
+
   i.    Root to the hosted environment on Heroku (or AWS, or OpenShift)
 
+
   ii.   Link to your project (you might need to come back to this) 
+  
+  
   iii.  Link to your assignment (you might need to come back to this)
