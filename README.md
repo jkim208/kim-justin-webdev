@@ -10,6 +10,7 @@ c. Create links to the following
 
   i.    Root to the hosted environment on Heroku (or AWS, or OpenShift)
 
+        https://kim-justin-webdev.herokuapp.com/
 
   ii.   Link to your project (you might need to come back to this) 
   
