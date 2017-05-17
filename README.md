@@ -1,4 +1,5 @@
-a. Say something about yourself, .e.g., you're a graduate student at Northeastern, past experience, if you are working, projects you've worked on, etc.\n
+a. Say something about yourself
+
     - My name is Justin Kim and I am a full-time graduate student at Northeastern for Bioinformatics. My background is in Microbiology so my programming experience is limited to coursework and self-study over the past year. I primarily work in Perl, Python and R for coding. I'd like to learn web development skills to better grasp and utilize web tools that are increasingly being leveraged for data analysis purposes.
   
 b. Describe the purpose of repository, e.g., for webdev
