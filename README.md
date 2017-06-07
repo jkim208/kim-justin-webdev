@@ -16,3 +16,5 @@ c. Create links to the following
   
   
   iii.  Link to your assignment (you might need to come back to this)
+
+d. Changes since last push: added bootstrap and jquery to public/assignment/assignment2/vendor
