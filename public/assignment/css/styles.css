@@ -1,0 +1,110 @@
+
+/*
+.wd-scrollable-left-split {
+    position: absolute;
+    bottom: 37px;
+    top: 50px;
+    overflow: scroll;
+    padding-top: 10px;
+}
+
+@media (min-width: 768px) {
+    .col-sm-8 {
+        width: 66.66666667%;
+        margin-left: 33%;
+    }
+}
+*/
+
+input.form-control,
+textarea.form-control,
+select.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+body a:hover {
+    text-decoration: none !important;
+}
+
+.navbar-default {
+    background-color: #337ab7;
+}
+
+.navbar-secondary {
+    background-color: slategrey;
+}
+
+.navbar-default .navbar-brand, .white {
+    color: white;
+}
+
+.navbar-padding-right {
+    padding-right: 17px;
+}
+
+.list-group-item {
+    border: none;
+
+}
+
+.back-button {
+    margin-left: 5px;
+}
+
+.plus-button {
+    margin-right: 30px
+}
+
+.ok-button {
+    margin-right: 0px;
+}
+
+.side-bar {
+    overflow-y: scroll;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+    margin-top: 50px;
+    padding-top: 15px;
+    margin-bottom: 50px;
+}
+
+.scrollable-left {
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    overflow: scroll;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+
+/*
+@media (min-width: 768px) {
+    .col-sm-8 {
+        margin-left: 33%;
+    }
+}
+
+ */
+.wd-widget {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.wd-toolbar {
+    position: absolute;
+    background-color: white;
+    top: 0px;
+    right: 0px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 10px;
+    opacity: 0.8;
+}

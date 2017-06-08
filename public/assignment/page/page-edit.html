@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-secondary navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left back-button">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand white" href="#">
+                    Pages
+                </a>
+            </div>
+            <div class="navbar-text pull-right plus-button">
+                <a href="page-new.html">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left back-button">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right ok-button">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-ok white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand white" href="#">
+                    Edit Page
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs side-bar">
+        <ul class="list-group">
+            <li class="list-group-item btn-default">
+                <a href="../widget/widget-list.html">Blog Post</a>
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item btn-default">
+                <a href="../widget/widget-list.html">Blogs</a>
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item btn-default">
+                <a href="../widget/widget-list.html">Homes</a>
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item btn-default">
+                <a href="../widget/widget-list.html">About</a>
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item btn-default">
+                <a href="../widget/widget-list.html">Contact Us</a>
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <label for="name">Name</label>
+        <input id="name"
+               class="form-control"
+               value="Blog Post"/>
+
+        <label for="description">Title</label>
+        <textarea id="description"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Page Title"></textarea>
+
+        <a href="page-list.html"
+           class="btn btn-block btn-danger">
+            Delete
+        </a>
+    </div>
+</div>
+
+<nav class="navbar navbar-secondary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="../user/profile.html">
+                <span class="glyphicon glyphicon-user white"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
