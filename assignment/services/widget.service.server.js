@@ -103,18 +103,18 @@ function uploadImage(req, res) {
 }
 
 function selectPhoto(req,res){
-    var widgetId = req.body.widgetId;
-    var websiteId = req.body.websiteId;
-    var pageId = req.body.pageId;
-    var url = req.body.url;
+    var widget = {};
+    widget._id = req.body.widgetId;
+    //var websiteId = req.body.websiteId;
+    widget.pageId = req.body.pageId;
+    widget.url = req.body.url;
 
     for(var w in widgets) {
-        if(widgetId === widgets[w]._id) {
+        if(widget._id === widgets[w]._id) {
             widgets[w] = widget;
             res.sendStatus(200);
             return;
         }
     }
     res.sendStatus(404);
-
 }

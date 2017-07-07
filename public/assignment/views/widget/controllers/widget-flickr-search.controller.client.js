@@ -3,13 +3,12 @@
         .module('WAM')
         .controller('FlickrImageSearchController', FlickrImageSearchController);
 
-    function FlickrImageSearchController(FlickrService, $routeParams, widgetService) {
+    function FlickrImageSearchController(FlickrService, $routeParams, widgetService, $location) {
         var model = this;
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
         model.websiteId = $routeParams['websiteId'];
         model.widgetId = $routeParams['widgetId'];
-        console.log(model.websiteId);
 
         model.searchPhotos = searchPhotos;
         model.selectPhoto = selectPhoto;
@@ -17,15 +16,18 @@
         function selectPhoto(photo) {
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            console.log(url);
+            var widget = {"url": url};
+            widget._id = model.widgetId;
+            widget.pageId = model.pageId;
+            widget.widgetType = "IMAGE";
+            widget.width = "100%";
             widgetService
-                .updateWidget(model.websiteId, model.pageId, model.widgetId, {"url": url})
-                .then(function(photo) {
-                    model.message = "Yay";
-                    console.log("WOO");
+                .updateWidget(widget._id, widget)
+                .then(function(widget) {
+                    $location.url
+                    ('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+model.widgetId);
                 });
         }
-
 
         function searchPhotos(searchTerm) {
             console.log(searchTerm);

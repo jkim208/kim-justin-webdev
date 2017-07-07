@@ -57,7 +57,8 @@
 
         function selectPhoto(websiteId, pageId, widgetId, ImageUrl) {
             var url = "/api/assignment/widget/" + widgetId;
-            return $http.put(url, websiteId, pageId, ImageUrl)
+            console.log(url);
+            return $http.put(url, pageId, widgetId, ImageUrl)
                 .then(function (response) {
                     return response.data;
                 });

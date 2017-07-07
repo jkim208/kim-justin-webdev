@@ -1,8 +1,17 @@
-/**
- * Created by Justin G on 6/20/2017.
- */
 (function () {
     angular
-        .module('WAM', ['']);
+        .module('WAM', [''])
+        .directive('wdDraggable', wdDraggable);
+
+    function wdDraggable() {
+
+        function linkFunction(scope, element) {
+            $(element).sortable();
+        }
+
+        return {
+            link: linkFunction
+        }
+    }
 
 }) ();
