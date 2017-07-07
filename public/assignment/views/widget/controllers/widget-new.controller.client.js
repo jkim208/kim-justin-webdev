@@ -10,6 +10,7 @@
         model.pageId = $routeParams['pageId'];
         model.websiteId = $routeParams['websiteId'];
         model.widgetId = $routeParams['widgetId'];
+        console.log(model.userId)
 
         // event handlers
         model.createWidget = createWidget;
@@ -17,15 +18,22 @@
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
 
         function init() {
-            model.widgets = widgetService.findAllWidgetsForUser(model.userId);
+            widgetService
+                .findAllWidgetsForPage(model.userId)
+                .then(function (widgets){
+                    model.widgets = widgets
+                });
         }
         init();
 
         // implementation
         function createWidget(widget) {
-            widget.pageId = model.userId;
-            widgetService.createWidget(widget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/widget');
+            widget.pageId = model.pageId;
+            widgetService
+                .createWidget(widget)
+                .then(function(widget){
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {

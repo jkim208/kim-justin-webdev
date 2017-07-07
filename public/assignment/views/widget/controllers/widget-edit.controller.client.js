@@ -16,21 +16,42 @@
         model.deleteWidget = deleteWidget;
         model.trustThisContent = trustThisContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+        model.getWidgetUrlForType = getWidgetUrlForType;
 
         function init() {
-            model.widgets = widgetService.findAllWidgetsForUser(model.pageId);
-            model.widget = widgetService.findWidgetById(model.widgetId);
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(function (widgets){
+                    model.widgets = widgets
+                });
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (widget){
+                    model.widget = widget
+                });
         }
         init();
 
         // implementation
-        function updateWidget(widget) {
-            widgetService.updateWidget(widget);
+        function getWidgetUrlForType(type) {
+            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
         }
 
-        function deleteWidget(widgetId) {
-            widgetService.deleteWidget(widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/widget');
+        function updateWidget(widget) {
+            widgetService
+                .updateWidget(model.widgetId, widget)
+                .then(function (widget) {
+                    model.message = "Widget updated successfully!";
+                });
+        }
+
+        function deleteWidget() {
+            widgetService
+                .deleteWidget(model.widgetId)
+                .then(function(widget){
+                    $location.url
+                    ('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {
@@ -46,7 +67,6 @@
             // scrub any unsafe content
             return $sce.trustAsHtml(html);
         }
-
     }
 
 }) ();

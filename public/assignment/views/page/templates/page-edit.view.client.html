@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand white" href="#">
+                <a class="navbar-brand white" href="">
                     Pages
                 </a>
             </div>
@@ -51,6 +51,11 @@
         </ul>
     </div>
     <div class="col-xs-12 col-sm-8 pull-right">
+
+        <div ng-show="model.message" class="alert alert-info">
+            {{model.message}}
+        </div>
+
         <label for="name">Name</label>
         <input id="name"
                ng-model="model.page.name"

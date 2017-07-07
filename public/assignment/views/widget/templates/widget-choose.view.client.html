@@ -15,38 +15,27 @@
 </nav>
 
 <div class="container-fluid">
-    <ul class="list-group">
-        <li class="list-group-item btn-default">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">Header</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Label</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">HTML</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Text Input</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Link</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Button</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">Image</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">YouTube</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Data Table</a>
-        </li>
-        <li class="list-group-item btn-default">
-            <a href="">Repeater</a>
-        </li>
-    </ul>
+    <label>Choose Widget Type To Create</label>
+    <select ng-model="model.widget.widgetType" class="form-control">
+        <option value="HEADING">Heading</option>
+        <option value="IMAGE">Image</option>
+        <option value="HTML">HTML</option>
+        <option value="YOUTUBE">YouTube</option>
+        <option value="LABEL">Label</option>
+        <option value="TEXT_INPUT">Text Input</option>
+        <option value="LINK">Link</option>
+        <option value="BUTTON">Button</option>
+        <option value="DATA_TABLE">Data Table</option>
+        <option value="REPEATER">Repeater</option>
+    </select>
+
+    <a ng-click="model.createWidget(model.widget)"
+       class="btn btn-block btn-success">
+        Create Widget Type
+    </a>
+
 </div>
+
+
 
 <div ng-include="'views/common/footer.view.client.html'"></div>

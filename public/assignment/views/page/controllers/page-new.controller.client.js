@@ -13,15 +13,22 @@
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findAllPagesForUser(model.userId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages){
+                    model.pages = pages
+                });
         }
         init();
 
         // implementation
         function createPage(page) {
-            page.websiteId = model.userId;
-            pageService.createPage(page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            page.websiteId = model.websiteId;
+            pageService
+                .createPage(page)
+                .then(function(page) {
+                $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            });
         }
     }
 

@@ -15,19 +15,34 @@
         model.deletePage = deletePage;
 
         function init() {
-            model.pages = pageService.findAllPagesForUser(model.userId);
-            model.page = pageService.findPageById(model.pageId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages){
+                    model.pages = pages
+                });
+            pageService
+                .findPageById(model.pageId)
+                .then(function (page){
+                    model.page = page
+                });
         }
         init();
 
         // implementation
         function updatePage(page) {
-            pageService.updatePage(page);
+            pageService
+                .updatePage(model.pageId, page)
+                .then(function (page) {
+                    model.message = "Page updated successfully!";
+                });
         }
 
-        function deletePage(pageId) {
-            pageService.deletePage(pageId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+        function deletePage() {
+            pageService
+                .deletePage(model.pageId)
+                .then(function(page) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            });
         }
     }
 

@@ -40,69 +40,27 @@
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs side-bar">
 
-            <div ng-repeat="widget in model.widgets" class="wd-widget">
-                <div class="wd-toolbar">
-                    <div ng-switch="widget.widgetType">
-                        <div ng-switch-when="HEADING">
-                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <div ng-switch-when="IMAGE">
-                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <div ng-switch-when="YOUTUBE">
-                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <div ng-switch-when="HTML">
-                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                    </div>
+        <div ng-repeat="widget in model.widgets" class="wd-widget">
+            <div ng-switch="widget.widgetType">
+                <div ng-switch-when="HEADING">
+                    <div ng-include src="'views/widget/editors/widget-heading-edit.view.client.html'"></div>
                 </div>
-
-                <div ng-switch="widget.widgetType">
-                    <div ng-switch-when="HEADING">
-                        <div ng-include src="'views/widget/editors/widget-heading-edit.view.client.html'"></div>
-                    </div>
-                    <div ng-switch-when="IMAGE">
-                        <div ng-include src="'views/widget/editors/widget-image-edit.view.client.html'"></div>
-                    </div>
-                    <div ng-switch-when="YOUTUBE">
-                        <div ng-include src="'views/widget/editors/widget-youtube-edit.view.client.html'"></div>
-                    </div>
-                    <div ng-switch-when="HTML"
-                         ng-bind-html="model.trustThisContent(widget.text)">
-                    </div>
+                <div ng-switch-when="IMAGE">
+                    <div ng-include src="'views/widget/editors/widget-image-edit.view.client.html'"></div>
                 </div>
-
-
+                <div ng-switch-when="YOUTUBE">
+                    <div ng-include src="'views/widget/editors/widget-youtube-edit.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="HTML"
+                     ng-bind-html="model.trustThisContent(widget.text)">
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="col-xs-12 col-sm-8 pull-right">
-        <div ng-switch="widget.widgetType">
-            <div ng-switch-when="HEADING">
-                <div ng-include src="'views/widget/templates/widget-heading.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="IMAGE">
-                <div ng-include src="'views/widget/templates/widget-image.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="YOUTUBE">
-                <div ng-include src="'views/widget/templates/widget-youtube.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="HTML"
-                 ng-bind-html="model.trustThisContent(widget.text)">
-            </div>
+        <div ng-model="model.widget">
+            <div ng-include="model.getWidgetUrlForType(model.widget.widgetType)"></div>
         </div>
 
     </div>

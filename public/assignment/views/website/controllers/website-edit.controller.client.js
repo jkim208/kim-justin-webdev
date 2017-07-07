@@ -10,30 +10,39 @@
         model.websiteId = $routeParams['websiteId'];
 
         // event handlers
-        model.createWebsite = createWebsite;
         model.updateWebsite = updateWebsite;
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(function (websites){
+                    model.websites = websites
+                });
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(function (website){
+                   model.website = website
+                });
         }
         init();
 
         // implementation
-        function createWebsite(website) {
-            website.developerId = model.userId;
-            websiteService.createWebsite(website);
-            $location.url('/user/'+model.userId+'/website');
-        }
 
         function updateWebsite(website) {
-            websiteService.updateWebsite(model.websiteId, website);
+            websiteService
+                .updateWebsite(model.websiteId, website)
+                .then(function (website) {
+                    model.message = "Website updated successfully!";
+                });
         }
 
         function deleteWebsite() {
-            websiteService.deleteWebsite(model.websiteId);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(function (website) {
+                    $location.url('/user/'+model.userId+'/website');
+                })
         }
     }
 
