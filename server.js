@@ -8,7 +8,6 @@ app.set('view engine', 'ejs');
 require('./utilities/filelist.js');
 
 app.use(app.express.static(__dirname + '/public'));
-
 require('./assignment/app.js');
 
 app.listen(process.env.PORT || 3000);
