@@ -15,6 +15,42 @@
 </nav>
 
 <div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('HEADING')">Header</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Label</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('HTML')">HTML</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('TEXT')">Text</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Link</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Button</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('IMAGE')">Image</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click=model.createWidget('YOUTUBE')>YouTube</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Data Table</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Repeater</a>
+        </li>
+    </ul>
+</div>
+
+<!--Implement code below when all options are available-->
+<!--<div class="container-fluid">
     <label>Choose Widget Type To Create</label>
     <select ng-model="model.widget.widgetType" class="form-control">
         <option value="HEADING">Heading</option>
@@ -33,9 +69,6 @@
        class="btn btn-block btn-success">
         Create Widget Type
     </a>
-
-</div>
-
-
+</div>-->
 
 <div ng-include="'views/common/footer.view.client.html'"></div>

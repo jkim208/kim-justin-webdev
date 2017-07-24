@@ -22,45 +22,52 @@
             widgetService
                 .findAllWidgetsForPage(model.pageId)
                 .then(function (widgets){
-                    model.widgets = widgets
+                    model.widgets = widgets;
                 });
             widgetService
                 .findWidgetById(model.widgetId)
                 .then(function (widget){
-                    model.widget = widget
+                    model.widget = widget;
                 });
         }
+
         init();
 
         // implementation
         function getWidgetUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+            if (type) {
+                return 'views/widget/templates/widget-' + type.toLowerCase() + '.view.client.html';
+            }
         }
 
-        function updateWidget(widget) {
+        function updateWidget(widgetId, widget) {
             widgetService
-                .updateWidget(model.widgetId, widget)
-                .then(function (widget) {
+                .updateWidget(widgetId, widget)
+                .then(function () {
                     model.message = "Widget updated successfully!";
                 });
         }
 
-        function deleteWidget() {
+        function deleteWidget(widgetId) {
             widgetService
-                .deleteWidget(model.widgetId)
-                .then(function(widget){
+                .deleteWidget(widgetId)
+                .then(function(){
                     $location.url
                     ('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {
-            var embedUrl = 'https://www.youtube.com/embed/';
-            var youTubeLinkParts = youTubeLink.split('/');
-            var id = youTubeLinkParts[youTubeLinkParts.length - 1];
-            embedUrl += id;
-            console.log(embedUrl);
-            return $sce.trustAsResourceUrl(embedUrl);
+            if (youTubeLink) {
+                var embedUrl = 'https://www.youtube.com/embed/';
+                var youTubeLinkParts = youTubeLink.split('/');
+                var id = youTubeLinkParts[youTubeLinkParts.length - 1];
+                embedUrl += id;
+                return $sce.trustAsResourceUrl(embedUrl);
+            } else {
+                return null;
+            }
+
         }
 
         function trustThisContent(html) {

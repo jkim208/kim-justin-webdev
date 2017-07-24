@@ -22,28 +22,24 @@
             websiteService
                 .findWebsiteById(model.websiteId)
                 .then(function (website){
-                   model.website = website
+                    model.website = website
                 });
         }
         init();
 
-        // implementation
-
-        function updateWebsite(website) {
+        function deleteWebsite(websiteId) {
             websiteService
-                .updateWebsite(model.websiteId, website)
-                .then(function (website) {
+                .deleteWebsite(websiteId)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website');
+                });
+        }
+        function updateWebsite(websiteId,website){
+            websiteService
+                .updateWebsite(websiteId,website)
+                .then(function () {
                     model.message = "Website updated successfully!";
                 });
         }
-
-        function deleteWebsite() {
-            websiteService
-                .deleteWebsite(model.websiteId)
-                .then(function (website) {
-                    $location.url('/user/'+model.userId+'/website');
-                })
-        }
     }
-
 }) ();

@@ -10,7 +10,6 @@
         model.pageId = $routeParams['pageId'];
         model.websiteId = $routeParams['websiteId'];
         model.widgetId = $routeParams['widgetId'];
-        console.log(model.userId)
 
         // event handlers
         model.createWidget = createWidget;
@@ -19,7 +18,7 @@
 
         function init() {
             widgetService
-                .findAllWidgetsForPage(model.userId)
+                .findAllWidgetsForPage(model.pageId)
                 .then(function (widgets){
                     model.widgets = widgets
                 });
@@ -27,22 +26,25 @@
         init();
 
         // implementation
-        function createWidget(widget) {
-            widget.pageId = model.pageId;
+        function createWidget(widgetType) {
+            var widget = {widgetType:widgetType};
             widgetService
-                .createWidget(widget)
-                .then(function(widget){
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                .createWidget(model.pageId,widget)
+                .then(function (widget) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                 });
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {
-            var embedUrl = 'https://www.youtube.com/embed/';
-            var youTubeLinkParts = youTubeLink.split('/');
-            var id = youTubeLinkParts[youTubeLinkParts.length - 1];
-            embedUrl += id;
-            console.log(embedUrl);
-            return $sce.trustAsResourceUrl(embedUrl);
+            if (youTubeLink) {
+                var embedUrl = 'https://www.youtube.com/embed/';
+                var youTubeLinkParts = youTubeLink.split('/');
+                var id = youTubeLinkParts[youTubeLinkParts.length - 1];
+                embedUrl += id;
+                return $sce.trustAsResourceUrl(embedUrl);
+            } else {
+                return null;
+            }
         }
 
         function trustThisContent(html) {
@@ -50,5 +52,4 @@
             return $sce.trustAsHtml(html);
         }
     }
-
 }) ();
