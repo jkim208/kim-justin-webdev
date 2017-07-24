@@ -5,8 +5,7 @@
 
     <label for="name">Name</label>
     <input id="name"
-           readonly
-           ng-model="model.widget._id"
+           ng-model="model.widget.name"
            class="form-control"/>
 
     <label for="text">Text</label>
@@ -24,12 +23,12 @@
         <option value="6">6 (smallest)</option>
     </select>
 
-    <a ng-click="model.updateWidget(model.widget)"
+    <a ng-click="model.updateWidget(model.widget._id, model.widget)"
        class="btn btn-block btn-success">
         Update
     </a>
 
-    <a ng-click="model.deleteWidget()"
+    <a ng-click="model.deleteWidget(model.widget._id)"
        class="btn btn-block btn-danger">
         Delete
     </a>

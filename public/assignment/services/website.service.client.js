@@ -22,8 +22,8 @@
                 })
         }
 
-        function createWebsite(website) {
-            var url = "/api/assignment/user/" + website.developerId + "/website";
+        function createWebsite(website, userId) {
+            var url = "/api/assignment/user/" + userId + "/website";
             return $http.post(url, website)
                 .then(function (response) {
                     return response.data;
@@ -54,5 +54,4 @@
                 })
         }
     }
-
 }) ();

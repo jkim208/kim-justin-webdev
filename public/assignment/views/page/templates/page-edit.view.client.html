@@ -69,12 +69,12 @@
                   class="form-control"
                   placeholder="Page Title"></textarea>
 
-        <a ng-click="model.updatePage(model.page)"
+        <a ng-click="model.updatePage(model.pageId, model.page)"
            class="btn btn-block btn-success">
             Update
         </a>
 
-        <a ng-click="model.deletePage()"
+        <a ng-click="model.deletePage(model.pageId)"
            class="btn btn-block btn-danger">
             Delete
         </a>

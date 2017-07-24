@@ -5,8 +5,7 @@
 
     <label for="name">Name</label>
     <input id="name"
-           readonly
-           ng-model="model.widget._id"
+           ng-model="model.widget.name"
            class="form-control"
            placeholder="Name of widget"/>
 
@@ -20,7 +19,7 @@
     <input id="url"
            ng-model="model.widget.url"
            class="form-control"
-           placeholder="https://www.youtube.com/embed/DkT6XHWne6E"/>
+           placeholder="Provide a url from under the Share tab of a YouTube video: https://youtu.be/Ijk4j-r7qPA"/>
 
     <label for="text">Width</label>
     <input id="text"
@@ -28,12 +27,12 @@
            class="form-control"
            placeholder="100%"/>
 
-    <a ng-click="model.updateWidget(model.widget)"
+    <a ng-click="model.updateWidget(model.widget._id, model.widget)"
        class="btn btn-block btn-success">
         Update
     </a>
 
-    <a ng-click="model.deleteWidget()"
+    <a ng-click="model.deleteWidget(model.widget._id)"
        class="btn btn-block btn-danger">
         Delete
     </a>

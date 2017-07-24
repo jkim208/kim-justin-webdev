@@ -23,25 +23,27 @@
             widgetService
                 .findAllWidgetsForPage(model.pageId)
                 .then(function (widgets){
-                    model.widgets = widgets
+                    model.widgets = widgets;
                 });
         }
         init();
 
         function getYouTubeEmbedUrl(youTubeLink) {
-            var embedUrl = 'https://www.youtube.com/embed/';
-            var youTubeLinkParts = youTubeLink.split('/');
-            var id = youTubeLinkParts[youTubeLinkParts.length - 1];
-            embedUrl += id;
-            console.log(embedUrl);
-            return $sce.trustAsResourceUrl(embedUrl);
+            if (youTubeLink) {
+                var embedUrl = 'https://www.youtube.com/embed/';
+                var youTubeLinkParts = youTubeLink.split('/');
+                var id = youTubeLinkParts[youTubeLinkParts.length - 1];
+                embedUrl += id;
+                return $sce.trustAsResourceUrl(embedUrl);
+            } else {
+                return null;
+            }
         }
 
         function trustThisContent(html) {
             // scrub any unsafe content
             return $sce.trustAsHtml(html);
         }
-
     }
 
 }) ();

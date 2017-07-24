@@ -29,21 +29,20 @@
         init();
 
         // implementation
-        function updatePage(page) {
+        function updatePage(pageId, page) {
             pageService
-                .updatePage(model.pageId, page)
-                .then(function (page) {
+                .updatePage(pageId, page)
+                .then(function () {
                     model.message = "Page updated successfully!";
                 });
         }
 
-        function deletePage() {
+        function deletePage(pageId) {
             pageService
-                .deletePage(model.pageId)
-                .then(function(page) {
+                .deletePage(pageId)
+                .then(function() {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
             });
         }
     }
-
 }) ();

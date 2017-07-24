@@ -18,28 +18,27 @@
                 return;
             }
 
- //           userService
- //               .findUserByUsername(username)
-  //              .then(createUser);
+           userService
+                .findUserByUsername(username)
+                .then(registerUser, handleError);
 
-  //          function createUser(found) {
-                var found = null;
-                if (found !== null) {
-                    model.error = "Username is not available";
-                } else {
-                    var user = {
-                        username: username,
-                        password: password
-                    };
-
-                    userService
-                        .createUser(user)
-                        .then(function (user) {
-                            $location.url('/user/' + user._id);
-                        });
-                }
+            function registerUser() {
+                var user = {
+                    username: username,
+                    password: password
+                };
+                userService
+                    .createUser(user)
+                    .then(function (user) {
+                        $location.url('/user/' + user._id);
+                    });
             }
-   //     }
+
+            function handleError() {
+                model.error = "Username is not available";
+
+            }
+        }
     }
 
 }) ();

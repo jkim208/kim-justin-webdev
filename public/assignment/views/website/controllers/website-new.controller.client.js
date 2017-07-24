@@ -22,13 +22,11 @@
 
         // implementation
         function createWebsite(website) {
-            website.developerId = model.userId;
             websiteService
-                .createWebsite(website)
-                .then(function(website) {
+                .createWebsite(website, model.userId)
+                .then(function() {
                     $location.url('/user/'+model.userId+'/website');
                 });
         }
     }
-
 }) ();

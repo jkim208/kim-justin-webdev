@@ -6,30 +6,33 @@
     function pageNewController($routeParams, pageService, $location) {
 
         var model = this;
+
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
-
-        // event handlers
+        model.pageId = $routeParams['pageId'];
         model.createPage = createPage;
 
         function init() {
-            pageService
-                .findAllPagesForWebsite(model.websiteId)
-                .then(function (pages){
-                    model.pages = pages
-                });
+            model.pages =
+                pageService
+                    .findAllPagesForWebsite(model.websiteId)
+                    .then(renderPages);
+            function renderPages(pages) {
+                model.pages = pages;
+            }
         }
         init();
 
-        // implementation
-        function createPage(page) {
-            page.websiteId = model.websiteId;
+        function createPage(name, title) {
+            var page = {
+                name: name,
+                description: title
+            };
             pageService
-                .createPage(page)
-                .then(function(page) {
-                $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
-            });
+                .createPage(model.websiteId, page)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
         }
     }
-
-}) ();
+})();

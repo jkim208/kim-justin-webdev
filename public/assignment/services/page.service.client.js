@@ -22,8 +22,8 @@
                 })
         }
 
-        function createPage(page) {
-            var url = "/api/assignment/website/" + page.websiteId + "/page";
+        function createPage(websiteId, page) {
+            var url = "/api/assignment/website/" + websiteId + "/page";
             return $http.post(url, page)
                 .then(function (response) {
                     return response.data;
@@ -53,6 +53,5 @@
                     return response.data;
                 })
         }
-
     }
 }) ();

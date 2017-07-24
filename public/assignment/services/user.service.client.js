@@ -39,14 +39,12 @@
         }
 
         function findUserByUsername(username) {
-            var url = "/api/assignment/user?username=" + username;
-            console.log([username]);
+            var url = "/api/assignment/username?username=" + username;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
         }
-
 
         function findUserByCredentials(username, password) {
             var url = "/api/assignment/user?username=" + username + "&password=" + password;
