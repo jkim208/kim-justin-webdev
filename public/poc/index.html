@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../assignment/vendor/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="../assignment/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="pocApp" ng-controller="pocController as model">
+<header class="jumbotron">
+    <h1 class="container">{{model.message}} Proof of Concept for Project</h1>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <h2>Search</h2>
+            <input ng-model="model.breed"
+                   class="form-control"
+                   placeholder="Poodle"/>
+            <button class="btn btn-primary btn-block"
+                    ng-click="model.findPet(model.breed)">
+                Search
+            </button>
+            <h2>Search Results</h2>
+
+            <ul class="list-group">
+                <li ng-click="model.searchDetails(animal.id.$t)" ng-repeat="animal in model.animals"
+                    class="list-group-item">
+                    <img ng-src="{{animal.media.photos.photo[3].$t}}" width="100px"/>
+                    <ul class="list-group">
+                        <li> {{animal.name.$t}} </li>
+                        <li> {{animal.id.$t}} </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6">
+            <h2>Details</h2>
+            <h3>{{model.animal.name.$t}}</h3>
+            <img ng-src="{{model.animal.media.photos.photo[3].$t}}" width="200px"/>
+            <h3>{{model.animal.breeds.breed.$t}}</h3>
+            <p>{{model.animal.description.$t}}</p>
+            <hr/>
+            {{model.animal}}
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
