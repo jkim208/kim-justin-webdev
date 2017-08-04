@@ -1,5 +1,8 @@
 var app = require('../../express');
 var userModel = require('../models/user/user.model.server.js');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
 
 app.get   ('/api/assignment/user', findUserByCredentials);
 app.get   ('/api/assignment/user/:userId', findUserById);
@@ -7,6 +10,21 @@ app.get   ('/api/assignment/username', findUserByUsername);
 app.post  ('/api/assignment/user', createUser);
 app.put   ('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', deleteUser);
+
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials({username: username, password: password})
+        .then(
+            function(user) {
+                if (!user) { return done(null, false); }
+                return done(null, user);
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
 
 function deleteUser(req, res) {
     var userId = req.params.userId;
