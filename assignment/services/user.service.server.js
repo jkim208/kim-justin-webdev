@@ -7,8 +7,7 @@ var bcrypt = require("bcrypt-nodejs");
 
 var facebookConfig = {
     clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    profileFields: ['id', 'displayName', 'email','first_name','last_name']
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET
 };
 
 passport.use(new LocalStrategy(localStrategy));
@@ -27,8 +26,7 @@ app.post  ('/api/assignment/logout', logout);
 app.post  ('/api/assignment/register', register);
 app.get  ('/api/assignment/loggedin', loggedin);
 
-app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', {
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         successRedirect: '/assignment/index.html#!/profile',
         failureRedirect: '/assignment/index.html#!/login'
     }));
@@ -41,12 +39,6 @@ if(process.env.MLAB_USERNAME_WEBDEV) {
 
 app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-
-app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
-    }));
 
 function facebookStrategy(token, refreshToken, profile, done) {
     userModel
@@ -153,7 +145,6 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-    user.password = bcrypt.hashSync(user.password);
     userModel
         .createUser(user)
         .then(function (user){
