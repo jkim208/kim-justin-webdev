@@ -5,11 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
-var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET
-};
-
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
@@ -25,6 +20,11 @@ app.post  ('/api/assignment/login', passport.authenticate('local'), login);
 app.post  ('/api/assignment/logout', logout);
 app.post  ('/api/assignment/register', register);
 app.get  ('/api/assignment/loggedin', loggedin);
+
+var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET
+};
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         successRedirect: '/assignment/index.html#!/profile',
@@ -78,9 +78,10 @@ function facebookStrategy(token, refreshToken, profile, done) {
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(
             function(user) {
+                console.log(user, password)
                 if(user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {
