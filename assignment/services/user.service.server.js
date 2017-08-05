@@ -102,13 +102,13 @@ function logout(req, res) {
 }
 
 function register(req, res) {
-    var user = req.body;
-    user.password = bcrypt.hashSync(user.password);
+    var userObj = req.body;
+    userObj.password = bcrypt.hashSync(userObj.password);
+
     userModel
-        .createUser(user)
+        .createUser(userObj)
         .then(function (user) {
-            req
-                .login(user, function (status) {
+            req.login(user, function (status) {
                     res.send(status);
                 });
         });
