@@ -8,7 +8,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.use(cookieParser());
-app.use(session({ secret: 'test'}));
+app.use(session({secret: 'local'}));
 // add process.env.SESSION_SECRET to secret
 
 app.use(passport.initialize());

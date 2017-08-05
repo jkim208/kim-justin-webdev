@@ -9,6 +9,10 @@ var userSchema = mongoose.Schema({
         {type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}
     ],
     email: String,
-    phone: String
+    phone: String,
+    facebook: {
+        id:    String,
+        token: String
+    }
 }, {collection: "user"});
 module.exports = userSchema;
