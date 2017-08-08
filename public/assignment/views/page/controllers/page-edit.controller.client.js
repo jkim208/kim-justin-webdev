@@ -30,10 +30,16 @@
 
         // implementation
         function updatePage(pageId, page) {
+            if(!page.name){
+                model.error = "Page name is required";
+                model.message = "";
+                return;
+            }
             pageService
                 .updatePage(pageId, page)
                 .then(function () {
                     model.message = "Page updated successfully!";
+                    model.error = "";
                 });
         }
 

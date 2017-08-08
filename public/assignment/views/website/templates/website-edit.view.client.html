@@ -57,6 +57,10 @@
             {{model.message}}
         </div>
 
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+
         <label for="name">Website Name</label>
         <input id="name"
                ng-model="model.website.name"

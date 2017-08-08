@@ -41,10 +41,16 @@
         }
 
         function updateWidget(widgetId, widget) {
+            if(!widget.name){
+                model.error = "Widget name is required";
+                model.message = "";
+                return;
+            }
             widgetService
                 .updateWidget(widgetId, widget)
                 .then(function () {
                     model.message = "Widget updated successfully!";
+                    model.error = "";
                 });
         }
 

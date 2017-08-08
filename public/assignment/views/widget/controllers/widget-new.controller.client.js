@@ -27,7 +27,7 @@
 
         // implementation
         function createWidget(widgetType) {
-            var widget = {widgetType:widgetType};
+            var widget = {widgetType:widgetType, name:'New Widget'};
             widgetService
                 .createWidget(model.pageId,widget)
                 .then(function (widget) {

@@ -13,6 +13,11 @@
         //implementation
         function register(username, password, password2) {
 
+            if(!username||!password){
+                model.error = "Username and Password required for registration";
+                return;
+            }
+
             if(password !== password2) {
                 model.error = "Passwords must match";
                 return;

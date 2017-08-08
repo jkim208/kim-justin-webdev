@@ -52,6 +52,10 @@
     </div>
     <div class="col-xs-12 col-sm-8 pull-right">
 
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+
         <div ng-show="model.message" class="alert alert-info">
             {{model.message}}
         </div>

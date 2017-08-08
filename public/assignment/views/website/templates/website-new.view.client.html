@@ -52,6 +52,9 @@
     </div>
 
     <div class="col-xs-12 col-sm-8 pull-right">
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
         <label for="name">Website Name</label>
         <input id="name"
                ng-model="website.name"
@@ -65,7 +68,7 @@
                   class="form-control"
                   placeholder="Description"></textarea>
 
-        <a ng-click="model.createWebsite(website)"
+        <a ng-click="model.createWebsite(website, website.name)"
            class="btn btn-block btn-success">
             Create
         </a>

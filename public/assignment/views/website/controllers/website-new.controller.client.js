@@ -21,7 +21,12 @@
         init();
 
         // implementation
-        function createWebsite(website) {
+        function createWebsite(website, websiteName) {
+            if(!websiteName){
+                model.error = "Website name is required";
+                return;
+            }
+
             websiteService
                 .createWebsite(website, model.userId)
                 .then(function() {

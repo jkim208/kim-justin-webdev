@@ -23,19 +23,21 @@ app.get  ('/api/assignment/loggedin', loggedin);
 
 var facebookConfig = {
     clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    /*clientID     : '1913800342212240',
+    clientSecret : 'eb01916e9a02d5313f118b90c18a9faa',*/
+    callbackURL  : 'http://localhost:3000/auth/facebook/callback',
+    profileFields: ['id', 'displayName', 'first_name','last_name','email']
 };
+
+if(process.env.MLAB_USERNAME_WEBDEV) {
+    facebookConfig.callbackURL = "http://kim-justin-webdev.herokuapp.com/auth/facebook/callback"
+}
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         successRedirect: '/assignment/index.html#!/profile',
         failureRedirect: '/assignment/index.html#!/login'
     }));
-
-if(process.env.MLAB_USERNAME_WEBDEV) {
-    facebookConfig.callbackURL = "http://kim-justin-webdev.herokuapp.com/auth/facebook/callback"
-} else {
-    facebookConfig.callbackURL = "http://localhost:3000/auth/facebook/callback"
-}
 
 app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -81,7 +83,6 @@ function localStrategy(username, password, done) {
         .findUserByUsername(username)
         .then(
             function(user) {
-                console.log(user, password)
                 if(user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {

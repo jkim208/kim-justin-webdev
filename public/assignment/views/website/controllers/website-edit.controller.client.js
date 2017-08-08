@@ -35,10 +35,16 @@
                 });
         }
         function updateWebsite(websiteId,website){
+            if(!website.name){
+                model.error = "Website name is required";
+                model.message = "";
+                return;
+            }
             websiteService
                 .updateWebsite(websiteId,website)
                 .then(function () {
                     model.message = "Website updated successfully!";
+                    model.error = "";
                 });
         }
     }

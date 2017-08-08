@@ -62,6 +62,9 @@
     </div>
 
     <div class="col-xs-12 col-sm-8 pull-right">
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
         <div ng-model="model.widget">
             <div ng-include="model.getWidgetUrlForType(model.widget.widgetType)"></div>
         </div>

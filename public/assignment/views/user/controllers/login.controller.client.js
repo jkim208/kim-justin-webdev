@@ -23,7 +23,7 @@
             }
 
             function handleError(error) {
-                model.message = "Username " + username + " not found, please try again.";
+                model.message = "Credentials provided for user '" + username + "' not found.";
             }
         };
     }

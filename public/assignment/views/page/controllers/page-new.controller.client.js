@@ -17,6 +17,7 @@
                 pageService
                     .findAllPagesForWebsite(model.websiteId)
                     .then(renderPages);
+
             function renderPages(pages) {
                 model.pages = pages;
             }
@@ -24,10 +25,16 @@
         init();
 
         function createPage(name, title) {
+            if(!name){
+                model.error = "Page name is required";
+                return;
+            }
+
             var page = {
                 name: name,
                 description: title
             };
+
             pageService
                 .createPage(model.websiteId, page)
                 .then(function () {
