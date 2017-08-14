@@ -25,8 +25,8 @@ app.get   ('/api/petStory/checkLoggedIn', checkLoggedIn);
 app.get   ('/api/petStory/checkAdmin', checkAdmin);
 
 var googleConfig = {
-    clientID     : '386426203323-p70hs55elrjktfd60t66pikr1akm64hv.apps.googleusercontent.com',// process.env.GOOGLE_CLIENT_ID,
-    clientSecret : '4j4ythbj32t0ohDCTrXQV6Od', //process.env.GOOGLE_CLIENT_SECRET,
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : 'http://localhost:3000/auth/google/callback' //process.env.GOOGLE_CALLBACK_URL
 };
 

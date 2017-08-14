@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <p class="navbar-text pull-left back-button">
+                <a href="#!/" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left white">
+          </span>
+                </a>
+            </p>
+            <div class="navbar-brand" href="#!/pet">
+                Visitor Page
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1>Our Pets</h1>
+    <ul class="list-group">
+        <li ng-repeat="pet in model.pets" class="list-group-item col-xs-4 pet-page container-fluid">
+            <h3>{{pet.name}}</h3>
+            <h6 class="btn-success">{{pet.status}}</h6>
+            <img class="image-scale" width="auto" height="auto" ng-src="{{pet.url}}"/>
+        </li>
+    </ul>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

@@ -13,6 +13,12 @@
                     currentUser: checkCurrentUser
                 }
             })
+            .when('/visitor', {
+
+                templateUrl: 'views/home/templates/visitor.view.client.html',
+                controller: 'visitorController',
+                controllerAs: 'model'
+            })
             .when('/admin', {
                 templateUrl: 'views/admin/templates/admin.view.client.html',
                 resolve: {
