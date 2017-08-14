@@ -24,8 +24,8 @@ app.get  ('/api/assignment/loggedin', loggedin);
 var facebookConfig = {
     //clientID     : process.env.FACEBOOK_CLIENT_ID,
     //clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    clientID     : '1913800342212240',
-    clientSecret : 'eb01916e9a02d5313f118b90c18a9faa',
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL  : 'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id', 'displayName', 'first_name','last_name','email']
 };

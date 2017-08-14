@@ -23,10 +23,12 @@
 
 <div class="container-fluid">
     <ul class="list-group">
+        <h2>Users</h2>
         <li ng-repeat="follow in model.follows" class="list-group-item btn-default">
             <a href="#!/follow/{{follow.username}}/pet">
                 {{follow.username}}
             </a>
+        <a ng-if="follow.roles.indexOf('SHELTER') > -1">Hi</a>
             <a ng-click="model.deleteFollow(follow._id)">
                 <span title="Delete follow" class="glyphicon glyphicon-remove-sign pull-right"></span>
             </a>

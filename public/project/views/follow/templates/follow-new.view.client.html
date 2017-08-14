@@ -70,7 +70,8 @@
                     <div class="row">
                         <h3>Users</h3>
                         <div ng-click="model.selectUser(user)" class="col-xs-12 btn-default" ng-repeat="user in model.users">
-                            <h3>{{user.username}}</h3>
+                            <h3>Username: {{user.username}}</h3>
+                            <li>Role: {{user.roles}}</li>
                             <li>Name: {{user.firstName}} {{user.lastName}} {{user.shelterName}}</li>
                         </div>
                     </div>
