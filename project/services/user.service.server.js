@@ -35,8 +35,8 @@ if(process.env.MLAB_USERNAME_WEBDEV) {
 }
 
 app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: '/petStory/index.html#!/profile',
-        failureRedirect: '/petStory/index.html#!/login'
+        successRedirect: '/project/index.html#!/profile',
+        failureRedirect: '/project/index.html#!/login'
     }));
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
