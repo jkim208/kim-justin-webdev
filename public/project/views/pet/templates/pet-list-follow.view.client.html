@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <p class="navbar-text pull-left back-button">
+                <a href="#!/follow" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left white">
+          </span>
+                </a>
+            </p>
+            <div class="navbar-brand">
+                {{model.followUsername}}'s Pets
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <button ng-click="model.getDetails(pet)" ng-repeat="pet in model.pets"
+                 class="col-xs-12 btn-default pet-page">
+                <img ng-src="{{pet.url}}" width="auto" height="60"/>
+                <h3>{{pet.name}}</h3>
+            </button>
+        </div>
+
+        <div ng-show="model.details" class="col-xs-6">
+            <img ng-src="{{model.animal.url}}" width="auto" height="auto" class="image-scale"/>
+            <h1>{{model.animal.name}}</h1>
+            <h3>Adoption Status: {{model.animal.status}}</h3>
+            <h3>Description</h3>
+            <h6>{{model.animal.description}}</h6>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

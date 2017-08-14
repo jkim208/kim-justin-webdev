@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
     lastName: String,
     dateCreated: {type: Date, default: Date.now()},
     websites: [
-        {type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}
+        {type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModelA"}
     ],
     email: String,
     phone: String,

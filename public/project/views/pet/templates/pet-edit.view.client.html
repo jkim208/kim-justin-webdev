@@ -1,0 +1,139 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/pet">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/pet/new">
+                    Pets
+                </a>
+            </div>
+            <div class="navbar-text pull-right plus-button">
+                <a href="#!/pet/new">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/pet">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right ok-button">
+                <a href="#!/pet">
+                    <span class="glyphicon glyphicon-ok white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/pet/new">
+                    Edit Pet
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs side-bar">
+        <ul class="list-group">
+            <li ng-repeat="pet in model.pets" class="list-group-item btn-default">
+                <a href="#!/pet/{{pet._id}}/page">
+                    {{pet.name}}
+                </a>
+                <a href="#!/pet/{{pet._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+
+        <div ng-show="model.message" class="alert alert-info">
+            {{model.message}}
+        </div>
+
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+
+        <label for="name">Pet Name</label>
+        <input id="name"
+               ng-model="model.pet.name"
+               class="form-control"
+               placeholder="Name"/>
+
+        <label for="breed">Breed</label>
+        <input id="breed"
+               ng-model="model.pet.breed"
+               class="form-control"
+               placeholder="Breed"/>
+
+        <label for="sex">Sex</label>
+        <input id="sex"
+               ng-model="model.pet.sex"
+               class="form-control"
+               placeholder="Breed"/>
+
+        <label for="age">Age</label>
+        <input id="age"
+               ng-model="model.pet.age"
+               class="form-control"
+               placeholder="Age"/>
+
+        <label for="state">State</label>
+        <input id="state"
+               ng-model="model.pet.state"
+               class="form-control"
+               placeholder="State"/>
+
+        <label for="description">Description</label>
+        <textarea id="description"
+                  ng-model="model.pet.description"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Description"></textarea>
+
+        <label>Adoption Status</label>
+        <select ng-model="model.pet.status"
+                class="form-control"/>
+        <option value="available">Available at a Shelter for Adoption</option>
+        <option value="unavailable">Unavailable for Adoption</option>
+        </select>
+
+        <label for="url">URL</label>
+        <input id="url"
+               class="form-control"
+               ng-model="model.pet.url"
+               placeholder=".jpg"/>
+
+        <label>Image Upload</label>
+        <form action="/api/project/upload" method="post" enctype="multipart/form-data">
+            <input  name="myFile"    type="file" class="form-control" required/>
+            <input  name="width"     value="{{model.pet.width}}" style="display: none"/>
+            <input  name="userId"    value="{{model.pet._user}}"   style="display: none"/>
+            <input  name="petId" value="{{model.pet._id}}"   style="display: none"/>
+            <button type="submit"    class="btn btn-block btn-primary form-control">
+                Upload New Image
+            </button>
+        </form>
+
+        <a ng-click="model.updatePet(model.petId, model.pet)"
+           class="btn btn-block btn-success">
+            Update
+        </a>
+
+        <a ng-click="model.deletePet(model.petId)"
+           class="btn btn-block btn-danger">
+            Delete
+        </a>
+
+
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

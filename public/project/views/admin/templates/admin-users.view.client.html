@@ -1,0 +1,79 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="#">
+                Admin
+            </a>
+        </div>
+        <div class="navbar-header pull-right navbar-padding-right">
+            <p class="navbar-text">
+                <a href="#!/admin" class="navbar-link">
+          <span class="glyphicon glyphicon-ok white">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <h1>Create Users</h1>
+    <table class="table table-stripped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Shelter Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Roles</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td><input ng-model="model.user.username" class="form-control"></td>
+            <td><input ng-model="model.user.password" class="form-control" type="password"></td>
+            <td><input ng-model="model.user.firstName" class="form-control"></td>
+            <td><input ng-model="model.user.lastName" class="form-control"></td>
+            <td><input ng-model="model.user.shelterName" class="form-control"></td>
+            <td><input ng-model="model.user.email" class="form-control" type="email"></td>
+            <td><input ng-model="model.user.phone" class="form-control"></td>
+            <td><input ng-model="model.user.roles" class="form-control"></td>
+            <td>
+                <button ng-click="model.adminCreateUser(model.user)" class="btn btn-primary">Add</button>
+                <button ng-click="model.adminUpdateUser(model.user)" class="btn btn-warning">Edit</button>
+            </td>
+        </tr>
+        </thead>
+    </table>
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
+    <h1>User List</h1>
+    <ul class="list-group">
+        <li ng-repeat="user in model.users" class="list-group-item btn-default">
+            <span ng-click="model.adminDeleteUser(user)"
+                    class="glyphicon glyphicon-remove pull-right btn-danger"></span>
+            <span ng-click="model.adminSelectUser(user)"
+                  class="glyphicon glyphicon-pencil pull-right btn-info"></span>
+            - {{user.username}} {{user.roles}} {{user.firstName}} {{user.lastName}}
+        </li>
+    </ul>
+
+</div>
+
+<nav class="navbar navbar-secondary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/">
+                <span class="glyphicon glyphicon-user white"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+

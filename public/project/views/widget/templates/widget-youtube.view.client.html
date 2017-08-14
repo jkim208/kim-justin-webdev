@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
+    <label for="name">Name</label>
+    <input id="name"
+           ng-model="model.widget.name"
+           class="form-control"
+           placeholder="Name of widget"/>
+
+    <label for="text">Text</label>
+    <input id="text"
+           ng-model="model.widget.text"
+           class="form-control"
+           placeholder="Describe your YouTube widget"/>
+
+    <label for="url">URL</label>
+    <input id="url"
+           ng-model="model.widget.url"
+           class="form-control"
+           placeholder="Provide a url from under the Share tab of a YouTube video: https://youtu.be/Ijk4j-r7qPA"/>
+
+    <label for="text">Width</label>
+    <input id="text"
+           ng-model="model.widget.width"
+           class="form-control"
+           placeholder="100%"/>
+
+    <a ng-click="model.updateWidget(model.widget._id, model.widget)"
+       class="btn btn-block btn-success">
+        Update
+    </a>
+
+    <a ng-click="model.deleteWidget(model.widget._id)"
+       class="btn btn-block btn-danger">
+        Delete
+    </a>
+
+</div>
+

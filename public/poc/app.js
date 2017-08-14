@@ -7,28 +7,8 @@
         var key = 'f9487d7d84ded9e60d62b3b7ef5ca10c'; // developer key
         var model = this;
 
-        model.getRandomPet = getRandomPet;
         model.findPet = findPet;
         model.searchDetails = searchDetails;
-
-        function getRandomPet () {
-            var query = 'http://api.petfinder.com/'; // base URL for API
-            query += 'pet.getRandom'; // select the method
-            query += '?key=' + key; // provide the key
-            query += '&format=json'; // JSON format
-            query += '&output=basic'; // specify how much of the record to return (basic or full)
-            var request = encodeURI(query); // remove spaces and special characters
-            var trustedRequest = trustURL(request);
-
-            console.log('Request:', trustedRequest);
-
-            $http.jsonp(trustedRequest)
-                .then(function (response) {
-                    console.log(response);
-                    model.animal = response.data.petfinder.pet;
-            });
-
-        }
 
         function findPet (breed) {
             var query = 'http://api.petfinder.com/'; // base URL for API

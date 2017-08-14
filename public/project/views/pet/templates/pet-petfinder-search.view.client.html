@@ -1,0 +1,62 @@
+<nav class="navbar navbar-secondary navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/pet/new">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand white" href="">
+                    Petfinder Search
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Search</h3>
+            <input ng-model="model.location"
+                   class="form-control"
+                   placeholder="Provide a zip code (required)"/>
+
+            <input ng-model="model.breed"
+                   class="form-control"
+                   placeholder="Provide a breed"/>
+
+            <button class="btn btn-primary btn-block"
+                    ng-click="model.findPet(model.location, model.breed)">
+                Search
+            </button>
+
+            <h3>Search Results</h3>
+
+            <div class="row">
+                <div ng-click="model.searchDetails(animal.id.$t)" ng-repeat="animal in model.animals"
+                    class="list-group-item col-xs-12">
+                    <img ng-src="{{animal.media.photos.photo[3].$t}}" width="100px" class="center"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <h3>Details</h3>
+            <h4>{{model.animal.name.$t}}</h4>
+            <img ng-src="{{model.animal.media.photos.photo[3].$t}}" width="200px"/>
+            <h4>{{model.animal.breeds.breed.$t}}</h4>
+            <p>{{model.animal.description.$t}}</p>
+            <hr/>
+            <a ng-click="model.createPet(model.animal)"
+               class="btn btn-block btn-success">
+                Add {{model.animal.name.$t}} to your pet list!
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
+

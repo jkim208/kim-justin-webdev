@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/follow">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/follow/new">
+                    Follows
+                </a>
+            </div>
+            <div class="navbar-text pull-right plus-button">
+                <a href="#!/follow/new">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/follow">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/follow/new">
+                    New Follow
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs side-bar">
+        <ul class="list-group">
+            <li ng-repeat="follow in model.follows" class="list-group-item btn-default">
+                <a href="#!/follow/{{follow._id}}/page">
+                    {{follow.username}}
+                </a>
+                <a href="#!/follow/{{follow._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+
+        <h4>Search for users by username, shelter name, first name or last name</h4>
+
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+
+        <div class="row container-fluid">
+            <div class="pull-right">
+                <div class="container-fluid">
+                    <div class="input-group">
+                        <input ng-model="searchTerm" type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <a ng-click="model.searchUsers(searchTerm)" class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="row">
+                        <h3>Users</h3>
+                        <div ng-click="model.selectUser(user)" class="col-xs-12 btn-default" ng-repeat="user in model.users">
+                            <h3>{{user.username}}</h3>
+                            <li>Name: {{user.firstName}} {{user.lastName}} {{user.shelterName}}</li>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

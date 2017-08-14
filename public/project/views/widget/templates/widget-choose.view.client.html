@@ -1,0 +1,74 @@
+<nav class="navbar navbar-secondary navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <p class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left white">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand white" href="#">
+                Choose Widget
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('HEADING')">Header</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Label</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('HTML')">HTML</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('TEXT')">Text</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Link</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Button</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('IMAGE')">Image</a>
+        </li>
+        <li class="list-group-item">
+            <a ng-click=model.createWidget('YOUTUBE')>YouTube</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Data Table</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Repeater</a>
+        </li>
+    </ul>
+</div>
+
+<!--Implement code below when all options are available-->
+<!--<div class="container-fluid">
+    <label>Choose Widget Type To Create</label>
+    <select ng-model="model.widget.widgetType" class="form-control">
+        <option value="HEADING">Heading</option>
+        <option value="IMAGE">Image</option>
+        <option value="HTML">HTML</option>
+        <option value="YOUTUBE">YouTube</option>
+        <option value="LABEL">Label</option>
+        <option value="TEXT_INPUT">Text Input</option>
+        <option value="LINK">Link</option>
+        <option value="BUTTON">Button</option>
+        <option value="DATA_TABLE">Data Table</option>
+        <option value="REPEATER">Repeater</option>
+    </select>
+
+    <a ng-click="model.createWidget(model.widget)"
+       class="btn btn-block btn-success">
+        Create Widget Type
+    </a>
+</div>-->
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

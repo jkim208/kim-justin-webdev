@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <p class="navbar-text pull-left back-button">
+                <a href="#!/profile" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left white">
+          </span>
+                </a>
+            </p>
+            <div class="navbar-brand" href="#!/pet">
+                Following
+            </div>
+        </div>
+        <div class="navbar-header pull-right">
+            <p class="navbar-text plus-button">
+                <a href="#!/follow/new" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <li ng-repeat="follow in model.follows" class="list-group-item btn-default">
+            <a href="#!/follow/{{follow.username}}/pet">
+                {{follow.username}}
+            </a>
+            <a ng-click="model.deleteFollow(follow._id)">
+                <span title="Delete follow" class="glyphicon glyphicon-remove-sign pull-right"></span>
+            </a>
+        </li>
+    </ul>
+    <div class = "padding-bottom"></div>
+    <a ng-click="model.findFollowers()"
+       class="btn btn-block btn-info">
+        See Followers
+    </a>
+
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="follower in model.followers" class="list-group-item btn-default">
+            <div>
+                {{follower.usernameFollower}}
+            </div>
+        </li>
+        <ul class="alert alert-danger" ng-if="model.followers.length === 0">
+            No followers just yet!
+        </ul>
+    </ul>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

@@ -32,6 +32,7 @@ app.set('view engine', 'ejs');
 require('./utilities/filelist.js');
 
 app.use(app.express.static(__dirname + '/public'));
-require('./assignment/app.js');
+require('./assignment/app.js'); // assignment work
+require('./project/app.js'); // project work
 
 app.listen(process.env.PORT || 3000);

@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="#">
+                Admin
+            </a>
+        </div>
+        <div class="navbar-header pull-right navbar-padding-right">
+            <p class="navbar-text">
+                <a href="#!/admin" class="navbar-link">
+          <span class="glyphicon glyphicon-ok white">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <h1>Edit Pets</h1>
+    <table class="table table-stripped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Breed</th>
+            <th>Sex</th>
+            <th>Age</th>
+            <th>State</th>
+            <th>Image URL</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td><input ng-model="model.pet.name" class="form-control"></td>
+            <td><input ng-model="model.pet.status" class="form-control"></td>
+            <td><input ng-model="model.pet.breed" class="form-control"></td>
+            <td><input ng-model="model.pet.sex" class="form-control"></td>
+            <td><input ng-model="model.pet.age" class="form-control"></td>
+            <td><input ng-model="model.pet.state" class="form-control"></td>
+            <td><input ng-model="model.pet.url" class="form-control"></td>
+            <td><input ng-model="model.pet.description" class="form-control"></td>
+            <td>
+                <button ng-click="model.adminUpdatePet(model.pet)" class="btn btn-warning">Edit</button>
+            </td>
+        </tr>
+        </thead>
+    </table>
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
+    <h1>Pet List</h1>
+    <ul class="list-group">
+        <li ng-repeat="pet in model.pets" class="list-group-item btn-default">
+            <span ng-click="model.adminDeletePet(pet)"
+                    class="glyphicon glyphicon-remove pull-right btn-danger"></span>
+            <span ng-click="model.adminSelectPet(pet)"
+                  class="glyphicon glyphicon-pencil pull-right btn-info"></span>
+            - {{pet.name}} {{pet.status}} {{pet.description}} {{pet.url}}
+        </li>
+    </ul>
+
+</div>
+
+<nav class="navbar navbar-secondary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/">
+                <span class="glyphicon glyphicon-user white"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+

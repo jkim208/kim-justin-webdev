@@ -1,0 +1,129 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/pet">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/pet/new">
+                    Pets
+                </a>
+            </div>
+            <div class="navbar-text pull-right plus-button">
+                <a href="#!/pet/new">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left back-button">
+                <a href="#!/pet">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right ok-button">
+                <a ng-click="model.createPet(pet)">
+                    <span class="glyphicon glyphicon-ok white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!/pet/new">
+                    New Pet
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs side-bar">
+        <ul class="list-group">
+            <li ng-repeat="pet in model.pets" class="list-group-item btn-default">
+                <a href="#!/pet/{{pet._id}}/page">
+                    {{pet.name}}
+                </a>
+                <a href="#!/pet/{{pet._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+
+        <div class="container-fluid padding-bottom">
+            <a href="#!/pet/petfinder/search" class="btn btn-block btn-info">
+                Search for a pet using Petfinder
+            </a>
+        </div>
+
+        <label for="name">Pet Name</label>
+        <input id="name"
+               ng-model="pet.name"
+               class="form-control"
+               placeholder="Name"/>
+
+        <label for="breed">Breed</label>
+        <input id="breed"
+               ng-model="pet.breed"
+               class="form-control"
+               placeholder="Breed"/>
+
+        <label for="sex">Sex</label>
+        <input id="sex"
+               ng-model="pet.sex"
+               class="form-control"
+               placeholder="Breed"/>
+
+        <label for="age">Age</label>
+        <input id="age"
+               ng-model="pet.age"
+               class="form-control"
+               placeholder="Age"/>
+
+        <label for="city">City</label>
+        <input id="city"
+               ng-model="pet.city"
+               class="form-control"
+               placeholder="City"/>
+
+        <label for="state">State</label>
+        <input id="state"
+               ng-model="pet.state"
+               class="form-control"
+               placeholder="State"/>
+
+        <label for="description">Pet Description</label>
+        <textarea id="description"
+                  ng-model="pet.description"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Description"></textarea>
+
+        <label>Adoption Status</label><br>
+        <select ng-model="model.pet.status"
+                class="form-control"/>
+        <option value="available">Available for Adoption</option>
+        <option value="unavailable">Unavailable for Adoption</option>
+        </select></br>
+
+        <label for="url">Image URL</label>
+        <input id="url"
+               class="form-control"
+               ng-model="model.pet.url"
+               placeholder=".jpg"/>
+
+        <a ng-click="model.createPet(pet, pet.name)"
+           class="btn btn-block btn-success">
+            Create
+        </a>
+
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
