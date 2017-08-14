@@ -14,9 +14,5 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
 mongoose.connect(connectionString, { useMongoClient: true });
 
 require('./services/user.service.server.js');
-require('./services/website.service.server.js');
-require('./services/page.service.server.js');
-require('./services/widget.service.server.js');
-
 require('./services/pet.service.server.js');
 require('./services/follow.service.server.js');

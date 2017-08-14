@@ -15,11 +15,15 @@ body a:hover {
 }
 
 .navbar-default {
-    background-color: #337ab7;
+    background-color: #3bcb23;
+}
+
+.navbar-main {
+    background-color: #031202;
 }
 
 .navbar-secondary {
-    background-color: slategrey;
+    background-color: #a5f1be;
 }
 
 .background-image-center{
@@ -115,8 +119,15 @@ body a:hover {
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
 }
+
 .image-scale {
     position: relative;
     max-width:70%;
     max-height:70%;
+}
+
+.home-image-scale {
+    position: relative;
+    max-width:100%;
+    overflow: hidden;
 }

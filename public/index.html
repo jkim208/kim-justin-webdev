@@ -1,30 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
     <title>Web Dev Course Home Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="project/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="project/css/styles.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="project/css/carousel.css" rel="stylesheet">
+
 </head>
+
 <body>
-    <h1>Web Dev Course Home Page</h1>
 
-    <p> Justin Kim </p>
-    <p> Northeastern University</p>
-    <p> Web Development</p>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Justin Kim</a>
+        </div>
 
-    <h2>Important Links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/jkim208/kim-justin-webdev">My public repository at GitHub.com</a>
-        </li>
-    </ul>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/">Home Page</a></li>
+                <li><a href="project/index.html">Project</a></li>
+                <li><a href="assignment/index.html">Assignment</a></li>
+                <li><a href="https://github.com/jkim208/kim-justin-webdev">My GitHub</a></li>
+                <li><a href="test/index.html">Test MongoDB</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container marketing">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">About Me
+                <a href="https://github.com/jkim208/kim-justin-webdev">
+                    <span class="glyphicon glyphicon-share-alt pull-right"></span>
+                </a>
+            </h2>
+            <p class="lead">
+                My name is Justin Kim and I am a Bioinformatics graduate student at Northeastern
+                University. This home page presents my project and assignment work for
+                CS5610 Web development.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="home-image-scale" width="auto" height="250"
+                 src="https://scontent.fewr1-2.fna.fbcdn.net/v/t1.0-9/11222526_3506446863392_188866132234525810_n.jpg?oh=b6945e566eff5c31557b8d7e2d2dccc5&oe=5A2861CF"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading"> Project: <span class="text-muted">Pet Story</span>
+                <a href="project/index.html"><span class="glyphicon glyphicon-share-alt pull-right"></span></a>
+            </h2>
+            <p class="lead">Pet Story is a web app that allows users to share their own pets and
+            keep track of animals looking to be adopted. Shelters are encouraged to join the app
+            to keep an up-to-date record of their available pets and reach out to potential
+            pet adopters.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img class="home-image-scale" width="auto" height="250"
+                 src="http://www.hddesktopbackgrounds.us/backgrounds-images/1920x1080/brvvi-desktop-2806296-1920x1080.jpg"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Assignments
+                <a href="assignment/index.html"><span class="glyphicon glyphicon-share-alt pull-right"></span></a>
+            </h2>
+            <p class="lead">The assignments geared toward developing a website and widgets app that
+            allowed users to build their own websites, pages, and widgets. </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive center-block"
+                 src="https://ak9.picdn.net/shutterstock/videos/10396151/thumb/1.jpg?i10c=img.resize(height:160)">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>CS 5610 Web Development</p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+
 </body>
 </html>

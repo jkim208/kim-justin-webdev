@@ -9,8 +9,6 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
 
-userModel.addWebsite = addWebsite;
-userModel.deleteWebsite = deleteWebsite;
 userModel.findUserByGoogleId = findUserByGoogleId;
 
 userModel.addPet = addPet;
@@ -74,25 +72,6 @@ function updateUser(userId, newUser) {
     });
 }
 
-function deleteWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function (user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
-            return user.save();
-        });
-}
-
-function addWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function (user) {
-            user.websites.push(websiteId);
-            return user.save();
-        });
-}
-
 function findUserByGoogleId(googleId) {
     return userModel.findOne({'google.id': googleId});
 }
@@ -102,7 +81,6 @@ function deletePet(userId, petId) {
         .findById(userId)
         .then(function (user) {
             var index = user.pets.indexOf(petId);
-            console.log(user);
             user.pets.splice(index, 1);
             return user.save();
         });

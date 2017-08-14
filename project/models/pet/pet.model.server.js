@@ -11,8 +11,6 @@ petModel.findPetById = findPetById;
 petModel.updatePet = updatePet;
 petModel.findAllPets = findAllPets;
 
-petModel.deletePage = deletePage;
-petModel.addPage = addPage;
 
 module.exports = petModel;
 
@@ -70,23 +68,4 @@ function updatePet(petId, pet) {
             width: pet.width
         }
     });
-}
-
-function addPage(petId, pageId) {
-    return petModel
-        .findById(petId)
-        .then(function (pet) {
-            pet.pages.push(pageId);
-            return pet.save();
-        });
-}
-
-function deletePage(petId, pageId) {
-    return petModel
-        .findById(petId)
-        .then(function (pet) {
-            var index = pet.pages.indexOf(pageId);
-            pet.pages.splice(index, 1);
-            return pet.save();
-        });
 }

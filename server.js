@@ -8,17 +8,13 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.use(cookieParser());
-app.use(session({secret: 'local',
-    resave: true,
-    saveUninitialized: true}
-));
-// add process.env.SESSION_SECRET to secret
-/*app.use(session(
+
+app.use(session(
     {
         secret: process.env.SESSION_SECRET,
         resave: true,
         saveUninitialized: true
-    }));*/
+    }));
 
 app.use(passport.initialize());
 app.use(passport.session());
