@@ -10,11 +10,13 @@ c. Create links to the following
 
   i.    Root to the hosted environment on Heroku (or AWS, or OpenShift)
 
-        https://kim-justin-webdev.herokuapp.com/
+        http://kim-justin-webdev.herokuapp.com/
 
-  ii.   Link to your project (you might need to come back to this) 
+  ii.   Link to your project 
   
+        http://kim-justin-webdev.herokuapp.com/project/index.html#!/
   
-  iii.  Link to your assignment (you might need to come back to this)
+  iii.  Link to your assignment 
+  
+        https://kim-justin-webdev.herokuapp.com/assignment/index.html#!/
 
-d. Changes since last push: added bootstrap and jquery to public/assignment/assignment2/vendor
